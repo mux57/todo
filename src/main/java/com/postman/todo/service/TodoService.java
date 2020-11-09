@@ -55,7 +55,9 @@ public class TodoService {
     if (!todo.isPresent()) {
       return todo;
     }
-    todos.get(todo.get().getTopic()).remove(todo);
+    List<Todo> list = todos.get(todo.get().getTopic());
+    list.remove(todo);
+    todos.put(todo.get().getTopic(), list);
     return todo;
   }
 
